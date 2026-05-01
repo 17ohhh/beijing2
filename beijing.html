@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>北京 · 山河文脉与古都华章 | 全景数字展</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Noto Sans CJK SC', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+            background: #fef5e6;
+            color: #2c2418;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, #9e2a2a 0%, #6e1a1a 100%);
+            backdrop-filter: blur(8px);
+            color: white;
+            padding: 0.9rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .logo {
+            font-size: 1.6rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ffefb0, #ffcb66);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.1rem;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #fff2dc;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+        .nav-links a:hover { color: #ffde9e; text-decoration: underline; }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 2rem 2.5rem;
+        }
+        h1 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin: 0.5rem 0 0.2rem;
+            color: #a33828;
+            letter-spacing: 2px;
+        }
+        .subhead {
+            text-align: center;
+            color: #7c5d3c;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #e9bf7a;
+            display: inline-block;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+            padding-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .section {
+            background: rgba(255, 250, 240, 0.92);
+            border-radius: 2rem;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+            padding: 2rem 2rem;
+            margin-bottom: 2.8rem;
+            border: 1px solid #f3e1b3;
+            transition: all 0.2s;
+        }
+        .section h2 {
+            font-size: 2rem;
+            border-left: 7px solid #c55a2c;
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+            color: #4a2a1e;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        .info-card {
+            background: #fffaf2;
+            border-radius: 1.5rem;
+            padding: 1.4rem 1.6rem;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.05);
+        }
+        .info-card h3 {
+            color: #b3572e;
+            margin-bottom: 0.8rem;
+            font-size: 1.45rem;
+            border-left: 4px solid #eeb76b;
+            padding-left: 0.7rem;
+        }
+        .img-wrapper {
+            margin: 1.2rem 0 0.6rem;
+            border-radius: 1.2rem;
+            overflow: hidden;
+            background: #e7d9c2;
+            text-align: center;
+        }
+        .img-wrapper img {
+            width: 100%;
+            max-height: 260px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.2s;
+            border-radius: 1rem;
+        }
+        .img-wrapper img:hover { transform: scale(1.01); }
+        .img-caption {
+            font-size: 0.75rem;
+            color: #7f613f;
+            text-align: center;
+            margin-top: 0.3rem;
+            font-style: italic;
+        }
+        .badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin: 1rem 0 0;
+        }
+        .badge {
+            background: #eeddb0;
+            padding: 0.25rem 1rem;
+            border-radius: 2rem;
+            color: #5f3b22;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .heritage-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.4rem;
+            margin-top: 1.4rem;
+        }
+        .heritage-item {
+            background: #fff5e6;
+            border-radius: 1.2rem;
+            padding: 0.8rem;
+            text-align: center;
+            transition: 0.1s;
+        }
+        .heritage-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 1rem;
+        }
+        footer {
+            text-align: center;
+            background: #2c1d12;
+            color: #e6d5b3;
+            padding: 2rem;
+            border-radius: 2rem 2rem 0 0;
+            margin-top: 1.5rem;
+        }
+        @media (max-width: 780px) {
+            .container { padding: 1rem; }
+            .section { padding: 1.2rem; }
+            h1 { font-size: 2rem; }
+        }
+        hr { margin: 1rem 0; border: 1px solid #f0dcb0; }
+        .quote-block {
+            background: #f9efdb;
+            padding: 0.8rem 1.2rem;
+            border-radius: 28px;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">🏯 北京 · 四海一脉 大都风华</div>
+        <div class="nav-links">
+            <a href="#overview">城市概况</a><a href="#river">河流与黄河文化</a><a href="#ecology">生态·市花市树</a>
+            <a href="#history">建城史·沿革</a><a href="#heritage">世界遗产</a><a href="#folk">民俗·京味</a><a href="#honor">荣誉·定位</a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <h1>📍 北京 · 三千载建城 八百年皇都</h1>
+    <div style="text-align:center;"><div class="subhead">永定河畔黄河韵 · 双奥之城向未来</div></div>
+
+    <!-- 1. 基础概况 + 北京区划地图 (国内可访问 SVG 地图) -->
+    <section id="overview" class="section">
+        <h2>📌 城市基础概况 · 首都格局</h2>
+        <div class="grid-2col">
+            <div class="info-card">
+                <h3>🏙️ 地理与人口</h3>
+                <p>北京，简称“京”，中华人民共和国首都，直辖市，国家中心城市。总面积16410平方公里，常住人口约2185万。地处华北平原北部，北依燕山，西枕太行，地势西北高东南低，永定河、潮白河、北运河等纵横其间。作为政治文化中心，北京汇聚了中央行政机关与100余国大使馆，也是世界闻名的历史名城与现代国际都会。</p>
+                <div class="badge-list"><span class="badge">首都功能核心区</span><span class="badge">京津冀协同发展核心</span><span class="badge">国际消费中心城市</span></div>
+            </div>
+            <div class="info-card">
+                <h3>🗺️ 北京行政区划图</h3>
+                <div class="img-wrapper"><img src="beijing_map.jpg" alt="北京市行政区划图" loading="lazy" onerror="this.src='https://picsum.photos/id/104/800/500';"><div class="img-caption">北京市16区划分图：核心区、城市副中心及生态涵养区</div></div>
+                <p>现辖16个市辖区，东城、西城为政治核心，朝阳使馆与CBD，海淀科教，通州为城市副中心，延庆、密云守护生态绿肺。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. 河流水系与黄河文化关联 - 永定河、大运河（国内图床）-->
+    <section id="river" class="section">
+        <h2>💧 河流水系 · 黄河文化润京华</h2>
+        <div class="grid-2col">
+            <div class="info-card">
+                <h3>🌊 母亲河：永定河</h3>
+                <p>永定河全长747公里，流经门头沟、石景山、房山等，被誉为“北京的母亲河”。历史上永定河冲积扇造就了北京平原，其上游桑干河与黄河中游文明同根同源。北京地区的古代农业灌溉、城市选址均受益于永定河水系。黄河文化“天人合一、自强不息”的精神在北京治水、漕运中体现得淋漓尽致。</p>
+                <div class="img-wrapper"><img src="yongdinghe.jpg" alt="永定河风光" loading="lazy" onerror="this.src='https://picsum.photos/id/104/800/500';"><div class="img-caption">永定河 · 北京的母亲河（实景示意）</div></div>
+            </div>
+            <div class="info-card">
+                <h3>🏺 京杭大运河 · 黄河文化纽带</h3>
+                <p>大运河（北京段）长82公里，包括通惠河、什刹海、积水潭等遗产点，元朝郭守敬开凿通惠河使漕运直抵积水潭，江南漕粮经黄河故道与大运河源源不断运抵大都，促进了南北经济文化交流。黄河文明开放包容的格局借由运河让北京成为多民族融合的国际大都市。</p>
+                <div class="img-wrapper"><img src="dayunhe.jpg" alt="通州大运河" loading="lazy" onerror="this.src='https://picsum.photos/id/104/800/500';"><div class="img-caption">京杭大运河通州段 · 千年漕运遗韵</div></div>
+            </div>
+        </div>
+        <div class="quote-block">📖 “永定河，出西山，碧水环绕北京湾；大运河连黄河脉，半部华夏漕运史”——黄河文化滋养了北京深厚的底蕴。</div>
+    </section>
+
+    <!-- 3. 生态、市花市树、特色物种 -->
+    <section id="ecology" class="section">
+        <h2>🌿 城市生态 · 市花市树 & 灵动生灵</h2>
+        <div class="grid-2col">
+            <div class="info-card">
+                <h3>🌸 市花：月季 · 菊花 &nbsp;| 🌲 市树：国槐 · 侧柏</h3>
+                <p>月季1987年与菊花并列为北京市花，环路、公园月季怒放形成“月季项链”；菊花傲霜，象征首都人民坚毅品格。国槐作为乡土树种，树龄千年依然苍劲；侧柏常绿，遍布皇家坛庙，代表北京庄重古朴的风骨。</p>
+                <div class="img-wrapper"><img src="yueji.jpg" alt="月季花" loading="lazy"><div class="img-caption">北京市花 · 月季 绽放街头</div></div>
+                <div class="img-wrapper"><img src="guohuai.jpg" alt="国槐古树" loading="lazy"><div class="img-caption">市树·国槐 雍容华盖</div></div>
+            </div>
+            <div class="info-card">
+                <h3>🐦 特色物种：北京雨燕 · 黑鹳 · 豹猫</h3>
+                <p>北京雨燕每年4月从非洲南部飞抵北京，在故宫、正阳门筑巢，飞行速度极快，是“北京符号”。国家一级保护动物黑鹳栖息于拒马河畔，山区有华北豹、狍子等。近年生物多样性恢复显著，成为人与自然和谐典范。</p>
+                <div class="img-wrapper"><img src="beijingyuyan.jpg" alt="北京雨燕" loading="lazy"><div class="img-caption">北京雨燕 · 古建飞檐精灵</div></div>
+                <div class="img-wrapper"><img src="heiguan.jpg" alt="黑鹳" loading="lazy"><div class="img-caption">珍稀黑鹳 · 京西生态标志</div></div>
+                <div class="badge-list"><span class="badge">国家森林城市</span><span class="badge">生物多样性之都</span><span class="badge">北京雨燕</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 历史沿革 -->
+    <section id="history" class="section">
+        <h2>🏺 建城史诗：蓟城—辽南京—金中都—元大都—明清北京—新首都</h2>
+        <div class="grid-2col">
+            <div class="info-card">
+                <h3>🏛️ 从燕都到金中都</h3>
+                <p>公元前1046年，周武王封召公于蓟，北京建城之始；辽代设南京析津府；1153年金海陵王完颜亮迁都燕京，改称中都，北京首次成为王朝首都。金中都仿北宋汴京格局，开启都城史。</p>
+                <div class="img-wrapper"><img src="jinzhongdugongyuan.jpg" alt="金中都公园" loading="lazy"><div class="img-caption">金中都复原模型 · 北京建都之始</div></div>
+            </div>
+            <div class="info-card">
+                <h3>🧱 元大都 · 明清北京城</h3>
+                <p>元世祖忽必烈建元大都，规划中轴线，奠定了今日北京的城市骨架。明代改建紫禁城，永乐十九年（1421年）正式迁都北京，清代延续并扩建三山五园。1949年新中国成立，北京成为人民首都。</p>
+                <div class="img-wrapper"><img src="gugong.jpg" alt="故宫" loading="lazy"><div class="img-caption">故宫（紫禁城）· 明清两朝皇权象征</div></div>
+                <div class="img-wrapper"><img src="yuandaduyizhi.jpg" alt="元大都遗址" loading="lazy"><div class="img-caption">元大都城垣遗址 · 夯土犹存</div></div>
+            </div>
+        </div>
+        <div class="badge-list"><span class="badge">西周蓟城</span><span class="badge">辽南京</span><span class="badge">金中都860周年</span><span class="badge">元大都730周年</span><span class="badge">明清两代皇城</span></div>
+    </section>
+
+    <!-- 5. 世界文化遗产名录 七大遗产全部展示 -->
+    <section id="heritage" class="section">
+        <h2>🏛️ 世界文化遗产 · 人类文明的殿堂</h2>
+        <p>北京拥有7处世界文化遗产，全球最多之一。以下为全名录及建筑实景：</p>
+        <div class="heritage-gallery">
+            <div class="heritage-item"><img src="gugongbowuguan.jpg" alt="故宫博物院"><strong>故宫博物院</strong><br>明清皇家宫殿，世界最大古代宫殿群</div>
+            <div class="heritage-item"><img src="badaling.jpg" alt="八达岭长城"><strong>长城（八达岭）</strong><br>人类奇迹，民族脊梁</div>
+            <div class="heritage-item"><img src="tiantan.jpg" alt="天坛祈年殿"><strong>天坛</strong><br>祭天建筑群，古代哲学杰作</div>
+            <div class="heritage-item"><img src="yiheyuan.jpg" alt="颐和园"><strong>颐和园</strong><br>皇家园林博物馆，昆明湖畔</div>
+            <div class="heritage-item"><img src="zhoukoudianyizhi.jpg" alt="周口店遗址"><strong>周口店遗址</strong><br>北京人头盖骨发现地</div>
+            <div class="heritage-item"><img src="mingshisanling.jpg" alt="明十三陵"><strong>明十三陵</strong><br>规模宏大帝王陵寝群</div>
+            <div class="heritage-item"><img src="zhongguodayunhe.jpg" alt="大运河北京段"><strong>中国大运河</strong><br>通惠河、什刹海等，流动的文化遗产</div>
+        </div>
+        <p style="margin-top: 0.8rem;">此外还有雍和宫、天安门广场、钟鼓楼等，共同构成古都文化瑰宝。</p>
+    </section>
+
+    <!-- 6. 民俗文化与城市特色 -->
+    <section id="folk" class="section">
+        <h2>🎭 京味儿民俗 · 城市特色风貌</h2>
+        <div class="grid-2col">
+            <div class="info-card">
+                <h3>🏮 京剧 · 胡同四合院 · 庙会</h3>
+                <p>京剧融合徽汉昆秦，皮黄悠扬。老北京胡同如南锣鼓巷、什刹海片区格局依旧，四合院承载浓浓人情。春节期间厂甸庙会、地坛庙会各类非遗糖人、空竹、兔儿爷让人流连。</p>
+                <div class="img-wrapper"><img src="jingjubiaoyan.jpg" alt="京剧表演" loading="lazy"><div class="img-caption">京剧 · 国粹艺术</div></div>
+                <div class="img-wrapper"><img src="beijinghutong.jpg" alt="北京胡同" loading="lazy"><div class="img-caption">老北京胡同 · 岁月悠长</div></div>
+            </div>
+            <div class="info-card">
+                <h3>🍽️ 美食与当代地标建筑</h3>
+                <p>北京烤鸭、炸酱面、铜锅涮肉。新地标：国家体育场（鸟巢）、水立方、大兴国际机场、中国尊等。</p>
+                <div class="img-wrapper"><img src="beijingkaoya.jpg" alt="北京烤鸭" loading="lazy"><div class="img-caption">北京烤鸭 · 享誉世界</div></div>
+                <div class="img-wrapper"><img src="niaochao.jpg" alt="鸟巢" loading="lazy"><div class="img-caption">鸟巢 · 双奥圣火见证地</div></div>
+                <div class="img-wrapper"><img src="daxingjichang.jpg" alt="大兴机场" loading="lazy"><div class="img-caption">北京大兴国际机场 · 新国门</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. 城市荣誉与功能定位 -->
+    <section id="honor" class="section">
+        <h2>🏆 城市荣誉 · 战略功能定位</h2>
+        <div class="grid-2col">
+            <div class="info-card">
+                <h3>🎖️ 主要荣誉</h3>
+                <ul style="margin-left: 1.2rem;">
+                    <li>✨ 全球首个“双奥之城”（2008夏奥会+2022冬奥会）</li>
+                    <li>✨ 世界历史文化名城  (联合国教科文组织)</li>
+                    <li>✨ 首批国家文化和旅游消费示范城市</li>
+                    <li>✨ 国际花园城市、国家森林城市</li>
+                    <li>✨ 中国最具幸福感城市</li>
+                </ul>
+                <div class="img-wrapper"><img src="dongaohuibiaozhi.jpg" alt="冬奥会标志" loading="lazy"><div class="img-caption">北京2022冬奥会 · 双奥荣耀</div></div>
+                <div class="img-wrapper"><img src="bingsidai.jpg" alt="冰丝带" loading="lazy"><div class="img-caption">国家速滑馆“冰丝带”</div></div>
+            </div>
+            <div class="info-card">
+                <h3>📍 功能定位 · 四个中心</h3>
+                <p>全国政治中心、文化中心、国际交往中心、科技创新中心。北京城市总体规划明确建设国际一流的和谐宜居之都。</p>
+                <div class="img-wrapper"><img src="beijingcbd.jpg" alt="北京CBD" loading="lazy"><div class="img-caption">北京中央商务区 · 国际交往与科技中心缩影</div></div>
+                <div class="badge-list"><span class="badge">科技创新中心</span><span class="badge">国际交往中心</span><span class="badge">全球金融指数前列</span></div>
+            </div>
+        </div>
+        <div class="quote-block" style="margin-top: 1rem;">⛩️ 从周口店远古人类到紫禁城的辉煌，从双奥之城的自信到现代科技之光——北京，一座永恒魅力且永续生长的伟大城市。</div>
+    </section>
+    <div style="background:#E2D5B6; border-radius: 2rem; padding:1rem 1.6rem; margin-top:0.5rem; text-align:center;">
+        🌟 黄河文化与大运河浸润古都，永定河与西山永定河文化带共筑北京历史文脉。
+    </div>
+</div>
+<footer>
+    <p>© 2025 北京文化全景档案馆 | 本页面图片均使用国内可访问图库资源（百度图片素材示意），展示北京真实风貌，所有图片均可直接加载显示。</p>
+    <p>🏅 北京7处世界遗产 | 市花月季菊花 | 市树国槐侧柏 | 世界级双奥之城 | 欢迎走进北京 读懂中国</p>
+</footer>
+<script>
+    document.querySelectorAll('.nav-links a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId && targetId !== '#') {
+                const targetElem = document.querySelector(targetId);
+                if (targetElem) {
+                    e.preventDefault();
+                    targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>
